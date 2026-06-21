@@ -10,19 +10,33 @@ This skill turns any AI agent into an expert frontend developer for Solana dApps
 
 ## Installation
 
-Run the `install.sh` script to install the skill into your Gemini/Antigravity config directory:
+The skill is composed of standard Markdown files, making it compatible with almost any modern AI coding assistant.
 
+### For Gemini / Antigravity CLI
+Run the automated install script:
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
 
+### For Cursor / Windsurf IDE
+Copy the `skill/` folder into your project's `.cursorrules` or `.windsurf` context directory, or simply @ tag the `SKILL.md` file in your chat.
+```bash
+cp -r skill/ .cursor/rules/solana-client-architect
+```
+
+### For Claude Code / Aider / Cline
+You can pass the main entry point to the CLI when asking it to build your frontend:
+```bash
+claude "Read skill/SKILL.md and build a frontend for target/idl/my_program.json"
+```
+Or for Aider:
+```bash
+aider --message "Follow the instructions in skill/SKILL.md to build the UI for my Pinocchio program"
+```
+
 ## Usage
 
-Once installed, simply ask your AI agent:
+Once the AI has access to the skill files, simply ask:
 
-> "Build a frontend for this Anchor IDL located at `target/idl/my_program.json`."
-
-Or for Pinocchio:
-
-> "Generate the web3.js client and React hooks for this Pinocchio program based on this Kinobi IDL."
+> "Use the Solana Client Architect skill to build a frontend for this Anchor IDL located at `target/idl/my_program.json`."

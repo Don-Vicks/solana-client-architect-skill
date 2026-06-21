@@ -35,6 +35,22 @@ Or for Aider:
 aider --message "Follow the instructions in skill/SKILL.md to build the UI for my Pinocchio program"
 ```
 
+### For GitHub Copilot Chat
+Open the `SKILL.md` file in your editor, and in the chat window, type `@workspace` or reference the file directly:
+```text
+@workspace Read skill/SKILL.md and generate the frontend hooks for target/idl/program.json
+```
+
+### For Roo Code (VSCode Extension)
+Roo Code can directly read files. Instruct it to start with the entry point:
+```text
+Please read skill/SKILL.md and follow its instructions to build my Pinocchio frontend.
+```
+
+### For ChatGPT / Claude Web UIs
+If you are using the web interfaces, simply upload the `idl.json` along with the relevant markdown files from the `skill/` folder (e.g., `SKILL.md`, `anchor.md`, `hooks.md`) and ask:
+> "Read the attached skill instructions and use them to generate a frontend for the attached IDL."
+
 ## Usage
 
 Once the AI has access to the skill files, simply ask:

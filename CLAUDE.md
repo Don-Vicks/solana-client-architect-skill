@@ -72,6 +72,7 @@ solana-client-architect-skill/
 │   ├── SKILL.md                 # Entry point
 │   ├── frameworks/
 │   │   ├── anchor.md
+│   │   ├── quasar.md
 │   │   └── pinocchio.md
 │   ├── generators/
 │   │   ├── hooks.md

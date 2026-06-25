@@ -25,6 +25,7 @@ Once the program framework is identified, route your generation process through 
 
 ### Phase 1: Client & Provider Setup
 - For **Anchor** programs: Read [frameworks/anchor.md](skill/frameworks/anchor.md).
+- For **Quasar** programs: Read [frameworks/quasar.md](skill/frameworks/quasar.md).
 - For **Pinocchio/Vanilla** programs: Read [frameworks/pinocchio.md](skill/frameworks/pinocchio.md).
 
 ### Phase 2: React State & Interaction

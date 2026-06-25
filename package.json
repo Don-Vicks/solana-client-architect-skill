@@ -1,0 +1,21 @@
+{
+  "name": "solana-client-architect-skill",
+  "version": "1.1.0",
+  "description": "Generates production-ready frontend code from Solana IDLs. Includes an NPX install script.",
+  "main": "bin/install.js",
+  "bin": {
+    "solana-client-architect-skill": "./bin/install.js"
+  },
+  "scripts": {
+    "start": "node ./bin/install.js"
+  },
+  "keywords": [
+    "solana",
+    "ai",
+    "skill",
+    "agent"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "type": "module"
+}

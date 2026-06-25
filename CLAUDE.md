@@ -73,9 +73,12 @@ solana-client-architect-skill/
 │   ├── frameworks/
 │   │   ├── anchor.md
 │   │   └── pinocchio.md
-│   └── generators/
-│       ├── hooks.md
-│       └── ui.md
+│   ├── generators/
+│   │   ├── hooks.md
+│   │   └── ui.md
+│   └── advanced/
+│       ├── priority-fees.md
+│       └── websockets.md
 │
 ├── agents/                      # Specialized agents
 │   ├── frontend-architect.md
@@ -89,7 +92,8 @@ solana-client-architect-skill/
 │
 └── rules/                       # Auto-loading code rules
     ├── typescript.md
-    └── react.md
+    ├── react.md
+    └── security.md
 ```
 
 **Main skill entry**: [skill/SKILL.md](skill/SKILL.md)

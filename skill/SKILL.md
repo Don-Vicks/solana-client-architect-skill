@@ -33,6 +33,10 @@ Once the program framework is identified, route your generation process through 
 ### Phase 3: UI & Component Rendering
 - To scaffold Tailwind CSS UI components, validate inputs securely, and manage pending states: Read [generators/ui.md](skill/generators/ui.md).
 
+### Phase 4: Advanced Optimizations (As Needed)
+- To configure dynamic compute units and priority fees: Read [advanced/priority-fees.md](skill/advanced/priority-fees.md).
+- To configure real-time websocket updates: Read [advanced/websockets.md](skill/advanced/websockets.md).
+
 ## Critical Directives
 - **Security First:** Never trust user input. Always validate addresses and amounts before constructing a transaction.
 - **Performance:** Abstract complex logic into hooks. Ensure components are memoized where necessary to prevent re-renders when wallet states change.

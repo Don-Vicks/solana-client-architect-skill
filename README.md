@@ -23,12 +23,27 @@ This skill forces AI agents to write modern, secure, and performant client integ
 
 ## 📦 Installation
 
-To install this skill into your local Solana AI Kit environment:
+### Option 1: One-Line Quick Install (Recommended)
+You can easily install this skill with a single command. It will securely download the necessary files and execute the standard installation script automatically:
 
 ```bash
-./install.sh
+bash <(curl -sSL https://raw.githubusercontent.com/Don-Vicks/solana-client-architect-skill/main/quick-install.sh)
 ```
-*(Or use `./install-custom.sh` for a custom agent directory)*
+
+### Option 2: Manual Clone & Install
+If you prefer to manually clone the repository or use custom installation flags, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Don-Vicks/solana-client-architect-skill.git
+   cd solana-client-architect-skill
+   ```
+
+2. **Run the installation script:**
+   ```bash
+   ./install.sh
+   ```
+   *(For custom agent directory setups, use `./install-custom.sh` instead).*
 
 ## 🧠 Skill Structure
 

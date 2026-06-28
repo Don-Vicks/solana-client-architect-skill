@@ -1,65 +1,45 @@
 # Solana Client Architect Skill
 
-This skill turns any AI agent into an expert frontend developer for Solana dApps. It bridges the gap between smart contract development and user interface creation by automatically generating production-ready React hooks, contexts, and modern UI components directly from an Interface Definition Language (IDL) file.
+An advanced, production-ready AI agent skill for the **Solana AI Kit** that transforms your coding agent into an expert Solana frontend and integration architect.
 
-## Features
-- **Framework Support:** Supports both **Anchor** (via `@coral-xyz/anchor`) and **Pinocchio** (via modern `@solana/web3.js` version 2 and Kinobi).
-- **Explicit Modern Libraries:** explicitly instructs agents to use **version 2** of `@solana/web3.js` (`@solana/web3.js@2`), moving away from legacy version 1 object-oriented classes like `PublicKey`.
-- **Automated Hooks:** Generates typed React Query hooks for fetching accounts and executing transactions robustly.
-- **UI Scaffolding:** Creates functional, Tailwind-styled React components to test and interact with the contract immediately.
+## 🎯 The Problem It Solves
 
-## Installation
+Bridging the gap between a raw Solana program (IDL) and a robust, production-ready frontend is one of the most common bottlenecks for builders. Furthermore, as the Solana ecosystem transitions to the modern stack, standard AI models consistently hallucinate outdated `v1` code (like `new Transaction()` and `new PublicKey()`).
 
-The skill is composed of standard Markdown files, making it compatible with almost any modern AI coding assistant. We provide a CLI tool to seamlessly install it into your IDE or Agent's context directory.
+This skill forces AI agents to write modern, secure, and performant client integrations using **`@solana/kit` (v2)**, **Codama** (formerly Kinobi), and `@tanstack/react-query`.
 
-### Quick Install via NPX
+## ✨ Features (2026 Stack Ready)
 
-Run the command and specify your target environment:
+- **`@solana/kit` v2 Mastery:** Teaches the agent to use `pipe()` for transaction building, async `getProgramDerivedAddress()`, and modern RPC subscriptions (`signatureNotifications`).
+- **Codama & Anchor IDL Support:** Seamlessly integrates with the modern Codama generation pipeline, while providing safe dual-track fallback logic for legacy Anchor v0.31.x support.
+- **Progressive Context Loading:** Highly token-efficient architecture. The agent only loads the specific sub-guides it needs (e.g., hooks, UI, or websockets) via the root `SKILL.md` router.
+- **Advanced Frontend Patterns:** Includes dedicated, progressively-loaded modules for:
+  - **Transaction Simulation:** For precise Compute Unit (CU) estimation before sending.
+  - **Priority Fees & Jito MEV:** Built-in guidance for tip accounts and bundle submissions.
+  - **WebSockets:** Dual-track patterns for v1 `Connection` and v2 `rpcSubscriptions`.
+  - **Token-2022:** Detecting and interacting with Transfer Hook extensions.
+  - **Solana Actions & Blinks:** Next.js API route templates and validation.
+- **Security First:** A dedicated security module covering input validation, simulation pre-flight checks, RPC security, and strict PDA ownership verifications.
+
+## 📦 Installation
+
+To install this skill into your local Solana AI Kit environment:
 
 ```bash
-# Install for Cursor IDE
-npx solana-client-architect-skill cursor
-
-# Install for Windsurf IDE
-npx solana-client-architect-skill windsurf
-
-# Install globally for Antigravity/Gemini
-npx solana-client-architect-skill antigravity
-
-# Install locally to a generic `.agent-skills` folder
-npx solana-client-architect-skill local
+./install.sh
 ```
+*(Or use `./install-custom.sh` for a custom agent directory)*
 
-### Manual Installation
+## 🧠 Skill Structure
 
-#### For Claude Code / Aider / Cline
-You can pass the main entry point to the CLI when asking it to build your frontend:
-```bash
-claude "Read skill/SKILL.md and build a frontend for target/idl/my_program.json"
-```
-Or for Aider:
-```bash
-aider --message "Follow the instructions in skill/SKILL.md to build the UI for my Pinocchio program"
-```
+This skill strictly follows the optimal standard for the Solana AI Kit:
+- `SKILL.md`: The main entry point, phase definitions, and context router.
+- `frameworks/`: Core architectural rules for Anchor, Pinocchio, and Quasar.
+- `generators/`: Code generation templates for React Hooks, UI components, and Testing (msw, bankrun).
+- `advanced/`: Deep dives into specific edge-case topics (Security, Priority Fees, WebSockets, Token Extensions).
+- `references/`: Quick lookup tables (Migration v1 to v2, RPC Providers).
+- `examples/`: Reference IDLs for the agent to validate its context against.
 
-#### For GitHub Copilot Chat
-Open the `SKILL.md` file in your editor, and in the chat window, type `@workspace` or reference the file directly:
-```text
-@workspace Read skill/SKILL.md and generate the frontend hooks for target/idl/program.json
-```
+## 🏆 Superteam Solana AI Kit Bounty
 
-#### For Roo Code (VSCode Extension)
-Roo Code can directly read files. Instruct it to start with the entry point:
-```text
-Please read skill/SKILL.md and follow its instructions to build my Pinocchio frontend.
-```
-
-#### For ChatGPT / Claude Web UIs
-If you are using the web interfaces, simply upload the `idl.json` along with the relevant markdown files from the `skill/` folder (e.g., `SKILL.md`, `anchor.md`, `hooks.md`) and ask:
-> "Read the attached skill instructions and use them to generate a frontend for the attached IDL."
-
-## Usage
-
-Once the AI has access to the skill files, simply ask:
-
-> "Use the Solana Client Architect skill to build a frontend for this Anchor IDL located at `target/idl/my_program.json`."
+This skill was built and open-sourced for the **Superteam Brasil - Ship useful agent skills** bounty, specifically aiming to solve the critical friction point of frontend IDL integration and accelerating ecosystem adoption of the modern `@solana/kit` v2 standard.

@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "name": "counter",
+  "instructions": [
+    {
+      "name": "increment",
+      "accounts": [
+        {
+          "name": "counter",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The counter account"
+          ]
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true,
+          "docs": [
+            "The authority allowed to increment"
+          ]
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Counter",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "count",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 1,
+      "name": "Unauthorized",
+      "msg": "You are not authorized to perform this action."
+    }
+  ],
+  "types": []
+}

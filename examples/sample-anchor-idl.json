@@ -1,0 +1,150 @@
+{
+  "version": "0.1.0",
+  "name": "task_manager",
+  "instructions": [
+    {
+      "name": "initializeBoard",
+      "accounts": [
+        {
+          "name": "board",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "PDA seeds: ['board', authority.key()]"
+          ]
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "createTask",
+      "accounts": [
+        {
+          "name": "board",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "task",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "PDA seeds: ['task', board.key(), taskCount]"
+          ]
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "completeTask",
+      "accounts": [
+        {
+          "name": "task",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Board",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "taskCount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Task",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "board",
+            "type": "publicKey"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "completed",
+            "type": "bool"
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TaskAlreadyCompleted",
+      "msg": "This task is already completed."
+    },
+    {
+      "code": 6001,
+      "name": "Unauthorized",
+      "msg": "You do not have permission to perform this action."
+    }
+  ],
+  "metadata": {
+    "address": "TaskMgmt11111111111111111111111111111111111"
+  }
+}

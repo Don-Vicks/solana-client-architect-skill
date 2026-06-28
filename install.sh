@@ -153,6 +153,18 @@ fi
 cp "$SCRIPT_DIR/CLAUDE.md" "$CLAUDE_MD_PATH"
 echo -e "  ${GREEN}✓${NC} Installed to $CLAUDE_MD_PATH"
 
+# Install to Gemini / Antigravity
+GEMINI_SKILLS_DIR="$HOME/.gemini/config/skills"
+GEMINI_ARCHITECT_PATH="$GEMINI_SKILLS_DIR/solana-client-architect-skill"
+
+echo -e "${CYAN}[4/4]${NC} Installing for Gemini (Antigravity)..."
+mkdir -p "$GEMINI_SKILLS_DIR"
+if [ -d "$GEMINI_ARCHITECT_PATH" ]; then
+    rm -rf "$GEMINI_ARCHITECT_PATH"
+fi
+cp -r "$ARCHITECT_SKILL_PATH" "$GEMINI_ARCHITECT_PATH"
+echo -e "  ${GREEN}✓${NC} Installed to $GEMINI_ARCHITECT_PATH"
+
 # Done
 echo ""
 echo -e "${GREEN}╔═══════════════════════════════════════════════════════════════╗${NC}"
@@ -162,6 +174,7 @@ echo ""
 echo -e "${WHITE}Installed:${NC}"
 echo -e "  ${GREEN}✓${NC} solana-dev-skill          ${CYAN}$CORE_SKILL_PATH${NC}"
 echo -e "  ${GREEN}✓${NC} solana-client-architect   ${CYAN}$ARCHITECT_SKILL_PATH${NC}"
+echo -e "  ${GREEN}✓${NC} Gemini Architect Skill    ${CYAN}$GEMINI_ARCHITECT_PATH${NC}"
 echo -e "  ${GREEN}✓${NC} CLAUDE.md                 ${CYAN}$CLAUDE_MD_PATH${NC}"
 echo ""
 echo -e "${CYAN}Try asking Claude:${NC}"

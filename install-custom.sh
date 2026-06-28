@@ -22,6 +22,7 @@ SOURCE_DIR="$SCRIPT_DIR/skill"
 
 # Default paths
 PERSONAL_SKILLS_DIR="$HOME/.claude/skills"
+GEMINI_SKILLS_DIR="$HOME/.gemini/config/skills"
 PROJECT_SKILLS_DIR=".claude/skills"
 
 # Installation targets (set during prompts)
@@ -55,6 +56,7 @@ print_help() {
     echo ""
     echo "Options:"
     echo "  --project        Install to current project (.claude/skills/)"
+    echo "  --gemini         Install to Gemini/Antigravity (~/.gemini/config/skills/)"
     echo "  --path PATH      Install to custom path"
     echo "  -h, --help       Show this help message"
     echo ""
@@ -69,6 +71,7 @@ find_core_skill() {
     # Check common locations for solana-dev-skill
     local locations=(
         "$PERSONAL_SKILLS_DIR/$CORE_SKILL_NAME"
+        "$GEMINI_SKILLS_DIR/$CORE_SKILL_NAME"
         "$PROJECT_SKILLS_DIR/$CORE_SKILL_NAME"
         "$HOME/.claude/$CORE_SKILL_NAME"
     )
@@ -91,25 +94,31 @@ prompt_install_location() {
     echo -e "${CYAN}│${NC}  ${WHITE}Select Installation Location${NC}                               ${CYAN}│${NC}"
     echo -e "${CYAN}└─────────────────────────────────────────────────────────────┘${NC}"
     echo ""
-    echo -e "  ${WHITE}[1]${NC} ${GREEN}Personal skills${NC} (~/.claude/skills/)"
-    echo -e "      ${YELLOW}Available to all projects${NC}"
+    echo -e "  ${WHITE}[1]${NC} ${GREEN}Claude Personal skills${NC} (~/.claude/skills/)"
+    echo -e "      ${YELLOW}Available to all Claude projects${NC}"
     echo ""
-    echo -e "  ${WHITE}[2]${NC} ${GREEN}Current project${NC} (./.claude/skills/)"
+    echo -e "  ${WHITE}[2]${NC} ${GREEN}Gemini Personal skills${NC} (~/.gemini/config/skills/)"
+    echo -e "      ${YELLOW}Available to Antigravity / Gemini${NC}"
+    echo ""
+    echo -e "  ${WHITE}[3]${NC} ${GREEN}Current project${NC} (./.claude/skills/)"
     echo -e "      ${YELLOW}Only for this project${NC}"
     echo ""
-    echo -e "  ${WHITE}[3]${NC} ${RED}Cancel${NC}"
+    echo -e "  ${WHITE}[4]${NC} ${RED}Cancel${NC}"
     echo ""
 
-    read -p "Select option [1-3]: " choice
+    read -p "Select option [1-4]: " choice
 
     case $choice in
         1)
             INSTALL_BASE="$PERSONAL_SKILLS_DIR"
             ;;
         2)
-            INSTALL_BASE="$PROJECT_SKILLS_DIR"
+            INSTALL_BASE="$GEMINI_SKILLS_DIR"
             ;;
         3)
+            INSTALL_BASE="$PROJECT_SKILLS_DIR"
+            ;;
+        4)
             echo -e "${YELLOW}Installation cancelled${NC}"
             exit 0
             ;;
@@ -272,6 +281,10 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         --project)
             INSTALL_BASE="$PROJECT_SKILLS_DIR"
+            shift
+            ;;
+        --gemini)
+            INSTALL_BASE="$GEMINI_SKILLS_DIR"
             shift
             ;;
         --path)
